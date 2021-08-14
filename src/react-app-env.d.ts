@@ -23,3 +23,5 @@ declare module "*.woff";
 declare module "*.woff2";
 
 declare module "react-flippy";
+
+declare module "react-router-dom";

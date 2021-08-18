@@ -22,12 +22,12 @@ function BlogsPage() {
 
   return (
     <div>
-      <Grid>
+      <Grid style={{ marginBottom: 60 }}>
         {blogList?.map((item) => (
           <BlogPreview
             key={item?.id}
             id={item?.id}
-            body={item?.body.slice(0, 700)}
+            body={item?.body.slice(0, 600)}
             title={item?.title}
             image={item?.images[0]}
           />

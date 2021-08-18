@@ -5,6 +5,9 @@ import MathLogo from "../static/mathmodellogo.png";
 
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import PinDropIcon from "@material-ui/icons/PinDrop";
+import PhoneIcon from "@material-ui/icons/Phone";
+import RoomIcon from "@material-ui/icons/Room";
+import EmailIcon from "@material-ui/icons/Email";
 
 function Footer() {
   return (
@@ -126,30 +129,39 @@ function Footer() {
                         </Grid>
                         <Grid container alignItems="center">
                           <Grid item xs={1}>
-                            <PinDropIcon style={{ color: "white" }} />
+                            <RoomIcon style={{ color: "white" }} />
                           </Grid>
                           <Grid item xs={10}>
-                            <Typography align="left" style={{ color: "white" }}>
+                            <Typography
+                              align="left"
+                              style={{ paddingLeft: 8, color: "white" }}
+                            >
                               Số 130 ngõ 3 Trường Chinh Hà Nội
                             </Typography>
                           </Grid>
                         </Grid>
                         <Grid container alignItems="center">
                           <Grid item xs={1}>
-                            <PinDropIcon style={{ color: "white" }} />
+                            <PhoneIcon style={{ color: "white" }} />
                           </Grid>
                           <Grid item xs={10}>
-                            <Typography align="left" style={{ color: "white" }}>
+                            <Typography
+                              align="left"
+                              style={{ paddingLeft: 8, color: "white" }}
+                            >
                               0931 4329 4595
                             </Typography>
                           </Grid>
                         </Grid>
                         <Grid container alignItems="center">
                           <Grid item xs={1}>
-                            <PinDropIcon style={{ color: "white" }} />
+                            <EmailIcon style={{ color: "white" }} />
                           </Grid>
                           <Grid item xs={10}>
-                            <Typography align="left" style={{ color: "white" }}>
+                            <Typography
+                              align="left"
+                              style={{ paddingLeft: 8, color: "white" }}
+                            >
                               toanmohinh@gmail.com
                             </Typography>
                           </Grid>

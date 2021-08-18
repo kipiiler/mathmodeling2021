@@ -6,7 +6,12 @@ import { apiUrl } from "../config/apiUrl.json";
 export default function BlogPreview({ id, title, body, image }: any) {
   return (
     <>
-      <Grid container alignItems="center" style={{ marginTop: 40 }}>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="space-between"
+        style={{ marginTop: 40 }}
+      >
         <Grid
           item
           xs={4}
@@ -17,11 +22,11 @@ export default function BlogPreview({ id, title, body, image }: any) {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundImage: `url("${apiUrl + "/Images/" + image}")`,
-            minHeight: "300px",
+            minHeight: "250px",
           }}
         ></Grid>
 
-        <Grid item xs={8}>
+        <Grid item xs={7}>
           <Link to={`/blog/${id}`} style={{ textDecoration: "none" }}>
             <Grid>
               <Grid>

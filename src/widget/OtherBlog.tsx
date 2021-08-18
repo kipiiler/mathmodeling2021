@@ -41,7 +41,7 @@ export default function OtherBlogSection() {
 
   const Ablog = ({ data }: any) => {
     return (
-      <Grid item xs={4}>
+      <Grid item xs={4} style={{ padding: 12 }}>
         <Grid
           item
           style={{

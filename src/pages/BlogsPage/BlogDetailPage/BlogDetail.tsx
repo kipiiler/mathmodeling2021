@@ -35,11 +35,12 @@ function BlogDetailPage() {
           item
           xs={12}
           style={{
+            display: !blog?.images?.length ? "none" : "",
             height: "auto",
             width: "100%",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundImage: `url("${apiUrl + "/Images/" + blog?.images[0]}")`,
             minHeight: "400px ",
           }}
@@ -54,42 +55,45 @@ function BlogDetailPage() {
           </Typography>
         </Grid>
         <Grid item xs={9}>
-          <Grid container>
-            <Grid
-              item
-              xs={6}
-              style={{
-                height: "auto",
-                width: "100%",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundImage: `url("${
-                  apiUrl + "/Images/" + blog?.images[1]
-                }")`,
-                minHeight: "300px ",
-                border: "12px solid white",
-                borderLeft: "none",
-              }}
-            ></Grid>
-            <Grid
-              item
-              xs={6}
-              style={{
-                height: "auto",
-                width: "100%",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundImage: `url("${
-                  apiUrl + "/Images/" + blog?.images[2]
-                }")`,
-                minHeight: "300px ",
-                border: "12px solid white",
-                borderRight: "none",
-              }}
-            ></Grid>
-          </Grid>
+          {blog?.images?.length > 1 && (
+            <Grid container>
+              <Grid
+                item
+                xs={blog?.images?.length == 2 ? 12 : 6}
+                style={{
+                  height: "auto",
+                  width: "100%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundImage: `url("${
+                    apiUrl + "/Images/" + blog?.images[1]
+                  }")`,
+                  minHeight: blog?.images?.length == 2 ? "400px" : "300px",
+                  border: "12px solid white",
+                  borderLeft: "none",
+                }}
+              ></Grid>
+              <Grid
+                item
+                xs={6}
+                style={{
+                  display: blog?.images?.length == 2 ? "none" : "",
+                  height: "auto",
+                  width: "100%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundImage: `url("${
+                    apiUrl + "/Images/" + blog?.images[2]
+                  }")`,
+                  minHeight: "300px ",
+                  border: "12px solid white",
+                  borderRight: "none",
+                }}
+              ></Grid>
+            </Grid>
+          )}
         </Grid>
       </Grid>
       <OtherBlogSection />

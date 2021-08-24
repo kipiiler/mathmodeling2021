@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CalendarPost({ image, title, body, month }: any) {
   return (
-    <Grid xs={4}>
+    <Grid item xs={4}>
       <Grid style={{ margin: 24 }}>
         <Typography
           align="left"

@@ -114,7 +114,7 @@ export const mainTheme = createTheme({
         backgroundColor: "#E13131",
         boxShadow: "none",
         "&:hover": {
-          backgroundColor: "#1B4D82",
+          backgroundColor: "#29ABE2",
           boxShadow: "none",
         },
         "&:disabled": {

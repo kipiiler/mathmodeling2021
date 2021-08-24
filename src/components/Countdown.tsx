@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import BackgroundCool from "../static/BackgroundCool.svg";
 
 export default function CountDown({ name, time }: any) {
   const [day, setDay] = useState(0);
@@ -8,9 +9,7 @@ export default function CountDown({ name, time }: any) {
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
   const [isEnded, setIsEnded] = useState(false);
-  // const now = new Date().getTime();
   const countDownDate = new Date(time).getTime();
-  // let distance = countDownDate - now;
 
   useEffect(() => {
     var x = setInterval(function () {
@@ -29,7 +28,7 @@ export default function CountDown({ name, time }: any) {
         setIsEnded(true);
       }
     }, 1000);
-  }, []);
+  });
 
   return (
     <Grid
@@ -39,7 +38,7 @@ export default function CountDown({ name, time }: any) {
         padding: "30px",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundImage: `url("https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png")`,
+        backgroundImage: `url("${BackgroundCool}")`,
         minHeight: "200px",
       }}
     >
@@ -80,7 +79,11 @@ export default function CountDown({ name, time }: any) {
           </Typography>
         )}
       </Grid>
-      <Grid container justifyContent="center" style={{ marginTop: 20 }}>
+      <Grid
+        container
+        justifyContent="center"
+        style={{ marginTop: 20, marginBottom: 60 }}
+      >
         <Button variant="contained" color="primary">
           <Typography>Đăng kí</Typography>
         </Button>

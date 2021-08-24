@@ -54,10 +54,10 @@ export default function GalleryPageDisplay({ year }: any) {
   }
 
   function handleSwitch(action: string) {
-    if (action == "+") {
+    if (action === "+") {
       index < maxIndex ? setIndex(index + 1) : setIndex(index);
     }
-    if (action == "-") {
+    if (action === "-") {
       index > 1 ? setIndex(index - 1) : setIndex(1);
     }
   }

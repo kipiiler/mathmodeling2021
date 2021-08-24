@@ -59,7 +59,7 @@ function BlogDetailPage() {
             <Grid container>
               <Grid
                 item
-                xs={blog?.images?.length == 2 ? 12 : 6}
+                xs={blog?.images?.length === 2 ? 12 : 6}
                 style={{
                   height: "auto",
                   width: "100%",
@@ -69,7 +69,7 @@ function BlogDetailPage() {
                   backgroundImage: `url("${
                     apiUrl + "/Images/" + blog?.images[1]
                   }")`,
-                  minHeight: blog?.images?.length == 2 ? "400px" : "300px",
+                  minHeight: blog?.images?.length === 2 ? "400px" : "300px",
                   border: "12px solid white",
                   borderLeft: "none",
                 }}
@@ -78,7 +78,7 @@ function BlogDetailPage() {
                 item
                 xs={6}
                 style={{
-                  display: blog?.images?.length == 2 ? "none" : "",
+                  display: blog?.images?.length === 2 ? "none" : "",
                   height: "auto",
                   width: "100%",
                   backgroundRepeat: "no-repeat",

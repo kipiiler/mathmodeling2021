@@ -20,10 +20,10 @@ export default function OtherBlogSection() {
   const [displayBlog, setDisplayBlog] = useState<IObject[]>();
 
   function handleSwitch(action: string) {
-    if (action == "+") {
+    if (action === "+") {
       blog && index < blog?.length + 2 ? setIndex(index + 1) : setIndex(index);
     }
-    if (action == "-") {
+    if (action === "-") {
       index > 3 ? setIndex(index - 1) : setIndex(3);
     }
   }

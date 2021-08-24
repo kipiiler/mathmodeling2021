@@ -2,11 +2,14 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { useLocation } from "react-router-dom";
 
+import FAQImage from "../static/FAQ.JPG";
+import BLOGImage from "../static/Blog.jpg";
+
 export default function SubNav() {
   const location = useLocation();
   let imageUrlscontainArray: { [key: string]: any } = {
-    faq: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/64e371ff-db9f-4b66-b34f-902e8c87865b/d5m49xe-88f608e6-a2e5-42b6-980e-149070b2b6fd.png",
-    blog: "https://images.cloudflareapps.com/ij5s5higSzWcOB6vks5Q_background-1.jpeg",
+    faq: FAQImage,
+    blog: BLOGImage,
   };
 
   function imagechooser(location: any) {
@@ -28,6 +31,8 @@ export default function SubNav() {
           <Container
             style={{
               backgroundImage: `url("${imagechooser(location) || ""}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           >
             <div

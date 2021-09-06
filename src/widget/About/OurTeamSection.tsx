@@ -39,17 +39,12 @@ export default function OurTeamSection() {
         </Grid>
         <Grid item xs={6}>
           <Typography align="left" color="textPrimary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-            perspiciatis vel? Earum magni dolor minus repellendus atque nisi
-            aspernatur commodi delectus. Incidunt perspiciatis ullam nihil
-            minima hic dolorum aut error! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Aliquam, perspiciatis vel? Earum magni dolor minus
-            repellendus atque nisi aspernatur commodi delectus. Incidunt
-            perspiciatis ullam nihil minima hic dolorum aut error! Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Aliquam, perspiciatis
-            vel? Earum magni dolor minus repellendus atque nisi aspernatur
-            commodi delectus. Incidunt perspiciatis ullam nihil minima hic
-            dolorum aut error!
+            Với nhiều năm xây dựng và phát triển, Toán Mô Hình đã xây dựng được
+            một đội ngũ nhân sự không chỉ có chất lượng chuyên môn cao mà còn là
+            một tổ chức đoàn kết, truyền cảm hứng trong công việc. Tuy có những
+            sự thay đổi nhân sự giữa các năm nhưng tinh thần tổ chức không hề
+            thay đổi. Điều đó được thể hiện qua những thành tích gặt hái và sự
+            phát triển lớn mạnh dần qua từng năm.
           </Typography>
         </Grid>
         <Grid

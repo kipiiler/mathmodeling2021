@@ -10,43 +10,44 @@ import ChiTong from "../../static/ChiTong.jpg";
 const FounderData: IFounder[] = [
   {
     name: "Lê Minh Phúc",
-    dob: "aaaa",
-    hometown: "aaaa",
-    education: "aaaa",
-    currentJob: "aaaa",
-    mathmodeling: "aaaa",
-    favquote: "aaaa",
+    dob: "Unknown",
+    hometown: "Hà Nội",
+    education: "National University of Singapore - NUS (Đã tốt nghiệp)",
+    currentJob: "Software Developer tại quỹ đầu tư RDW",
+    mathmodeling: "2015 -  2017 (Phụ trách mảng Nội dung - Chuyên môn)",
+    favquote:
+      "'Tôi không biết thế giới nhìn tôi như thế nào, nhưng đối với tôi, mình dường như chỉ là một đứa bé chơi đùa trên bờ biển: thi thoảng lại chăm chú nhìn vào một hòn sỏi trơn nhẵn hay một vỏ ốc đẹp đẽ hơn bình thường, trong khi đại dương bao la của kiến thức ngay trước mắt mình còn chưa được khám phá.' - Isaac Newton",
     image: AnhPhuc,
   },
   {
     name: "Nguyễn Phương Anh",
-    dob: "aaaa",
-    hometown: "aaaa",
-    education: "aaaa",
-    currentJob: "aaaa",
-    mathmodeling: "aaaa",
-    favquote: "aaaa",
+    dob: "1992",
+    hometown: "Hà Nội",
+    education: "Đại học Sư phạm Hà Nội (Đã tốt nghiệp)",
+    currentJob: "Archimedes Academy",
+    mathmodeling: "2015 -  2020 (Phụ trách mảng Đối ngoại - Tài chính)",
+    favquote: `"Logic sẽ đưa chúng ta từ điểm A đến điểm B. Trí tưởng tượng sẽ đưa chúng ta tới mọi nơi" - Albert Einstein`,
     image: ChiPhuongAnh,
   },
   {
     name: "Tống Hiền Chi",
-    dob: "aaaa",
-    hometown: "aaaa",
-    education: "aaaa",
-    currentJob: "aaaa",
-    mathmodeling: "aaaa",
-    favquote: "aaaa",
+    dob: "Unknown",
+    hometown: "Hà Nội",
+    education: "Yale University (Đã tốt nghiệp)",
+    currentJob: "Google",
+    mathmodeling: "2015 -  2018 (Phụ trách mảng Nội dung - Chuyên môn)",
+    favquote: `"Không có lời giải tốt nhất, chỉ có lời giải tốt hơn” - Toán Mô hình Hà Nội`,
     image: ChiTong,
   },
 
   {
     name: "Lê Trần Kiên",
-    dob: "aaaa",
-    hometown: "aaaa",
-    education: "aaaa",
-    currentJob: "aaaa",
-    mathmodeling: "aaaa",
-    favquote: "aaaa",
+    dob: "1998",
+    hometown: "Nghệ An",
+    education: "Nanyang Technological University - NTU",
+    currentJob: "Unknown",
+    mathmodeling: "2015 -  2019 (Phụ trách mảng Chuyên môn)",
+    favquote: "Follow your dream",
     image: AnhKien,
   },
 ];
@@ -124,10 +125,10 @@ export default function FounderSection() {
           style={{ borderTop: "1px solid grey", paddingTop: 16 }}
         >
           <Typography align="left" color="textPrimary">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum
-            sapiente repudiandae id cupiditate ex vel veritatis corrupti iusto,
-            mollitia minima, ipsum magni, amet nulla veniam commodi!
-            Dignissimos, corrupti consectetur. Earum!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+            cum distinctio hic obcaecati eos laboriosam? Tempora incidunt
+            maiores veritatis soluta praesentium optio debitis minus sint. Quia
+            magni eos officiis eius.
           </Typography>
         </Grid>
         <Grid container style={{ marginTop: 40 }}>

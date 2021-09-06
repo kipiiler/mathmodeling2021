@@ -50,7 +50,7 @@ export default function OtherBlogSection() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url("${apiUrl + "/Images/" + data.images[0]}")`,
+            backgroundImage: `url("${apiUrl + "/Images/" + data.image}")`,
             minHeight: "200px",
             borderBottom: "24px solid white",
           }}

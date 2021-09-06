@@ -9,6 +9,8 @@ import Grid from "@material-ui/core/Grid/Grid";
 import { Typography } from "@material-ui/core";
 import OtherBlogSection from "../../../widget/OtherBlog";
 
+import ReactHtmlParser from "react-html-parser";
+
 interface IOBj {
   [key: string]: any;
 }
@@ -41,18 +43,18 @@ function BlogDetailPage() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "contain",
-            backgroundImage: `url("${apiUrl + "/Images/" + blog?.images[0]}")`,
+            backgroundImage: `url("${apiUrl + "/Images/" + blog?.image}")`,
             minHeight: "400px ",
           }}
         ></Grid>
         <Grid item xs={9}>
-          <Typography
+          {/* <Typography
             align="justify"
             color="textPrimary"
             style={{ margin: "20px 0" }}
-          >
-            {blog?.body}
-          </Typography>
+          > */}
+          {ReactHtmlParser(blog?.body)}
+          {/* </Typography> */}
         </Grid>
         <Grid item xs={9}>
           {blog?.images?.length > 1 && (
@@ -67,7 +69,7 @@ function BlogDetailPage() {
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundImage: `url("${
-                    apiUrl + "/Images/" + blog?.images[1]
+                    apiUrl + "/Images/" + blog?.image
                   }")`,
                   minHeight: blog?.images?.length === 2 ? "400px" : "300px",
                   border: "12px solid white",
@@ -85,7 +87,7 @@ function BlogDetailPage() {
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundImage: `url("${
-                    apiUrl + "/Images/" + blog?.images[2]
+                    apiUrl + "/Images/" + blog?.image
                   }")`,
                   minHeight: "300px ",
                   border: "12px solid white",

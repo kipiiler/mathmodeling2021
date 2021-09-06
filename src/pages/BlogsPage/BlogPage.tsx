@@ -29,7 +29,7 @@ function BlogsPage() {
             id={item?.id}
             body={item?.body.slice(0, 600)}
             title={item?.title}
-            image={item?.images[0]}
+            image={(item && item.image != null && item.image) || null}
           />
         ))}
       </Grid>

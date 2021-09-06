@@ -30,3 +30,5 @@ declare module "*.woff2";
 declare module "react-flippy";
 
 declare module "react-router-dom";
+declare module "react-mathjax-preview";
+declare module "react-html-parser";

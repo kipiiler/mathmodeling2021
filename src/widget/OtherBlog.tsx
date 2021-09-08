@@ -10,6 +10,8 @@ import axios from "axios";
 import { apiUrl } from "../config/apiUrl.json";
 import { Link } from "react-router-dom";
 
+import ReactHtmlParser from "react-html-parser";
+
 interface IObject {
   [key: string]: any;
 }
@@ -30,7 +32,7 @@ export default function OtherBlogSection() {
   useEffect(() => {
     axios.get(`${apiUrl}/api/article`).then((res) => {
       if (res.data) {
-        setBlog(res.data);
+        setBlog(res.data.filter((el: any) => el.isPublished === true));
       }
     });
   }, []);
@@ -50,7 +52,10 @@ export default function OtherBlogSection() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url("${apiUrl + "/Images/" + data.image}")`,
+            backgroundImage:
+              data.image != null
+                ? `url("${apiUrl + "/Images/" + data.image}")`
+                : "url(https://wallpaperaccess.com/full/1308190.jpg)",
             minHeight: "200px",
             borderBottom: "24px solid white",
           }}
@@ -72,7 +77,7 @@ export default function OtherBlogSection() {
 
               <Grid>
                 <Typography align="justify" color="textPrimary">
-                  {data.body.slice(0, 300)}
+                  {ReactHtmlParser(data.body.slice(0, 300))}
                 </Typography>
               </Grid>
             </Grid>
@@ -103,8 +108,8 @@ export default function OtherBlogSection() {
           </Grid>
           <Grid item xs={10}>
             <Grid container>
-              {displayBlog?.map((item) => (
-                <Ablog data={item} />
+              {displayBlog?.map((item, index) => (
+                <Ablog data={item} key={index} />
               ))}
             </Grid>
           </Grid>

@@ -17,7 +17,6 @@ export default function SubNav() {
       location.pathname.includes("/blog") ||
       location.pathname.includes("/faq")
     ) {
-      console.log(location.pathname);
       let identifier = location.pathname.slice(1, location.pathname.length);
       return imageUrlscontainArray[identifier] || imageUrlscontainArray["blog"];
     } else return null;

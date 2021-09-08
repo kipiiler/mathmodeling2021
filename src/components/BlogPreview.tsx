@@ -2,7 +2,6 @@ import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../config/apiUrl.json";
-import * as Mathjax from "react-mathjax-preview";
 import ReactHtmlParser from "react-html-parser";
 
 export default function BlogPreview({ id, title, body, image }: any) {
@@ -46,10 +45,7 @@ export default function BlogPreview({ id, title, body, image }: any) {
 
               <Grid>
                 <Typography align="left" color="textPrimary">
-                  {/* <Mathjax
-                    math={`Prove that not exist continuous function: $f: \mathbb C/{0\to \mathbb C/{0}$ satisfies $f^2(z) = z$ b,`}
-                  /> */}
-                  {ReactHtmlParser(body)}
+                  {ReactHtmlParser(body.slice(0, 600))}
                 </Typography>
               </Grid>
             </Grid>

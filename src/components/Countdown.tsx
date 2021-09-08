@@ -1,14 +1,46 @@
 import { Button, Grid, Typography } from "@material-ui/core";
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import BackgroundCool from "../static/BackgroundCool.svg";
+import { apiUrl } from "../config/apiUrl.json";
 
-export default function CountDown({ name, time }: any) {
+interface IEvent {
+  [key: string]: any;
+}
+
+export default function CountDown() {
+  const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
+  useEffect(() => {
+    axios.get(`${apiUrl}/api/event`).then((res) => {
+      if (res.data) {
+        setFeatureEvent(
+          res.data.sort(function compare(a: any, b: any) {
+            var dateA: any = new Date(a.dateStart);
+            var dateB: any = new Date(b.dateStart);
+            return dateB - dateA;
+          })
+        );
+      }
+    });
+  }, []);
+
+  return (
+    <ClockElement
+      name={featuredEvent && featuredEvent[0].name}
+      time={featuredEvent && featuredEvent[0].dateStart}
+    />
+  );
+}
+
+function ClockElement({ name, time }: any) {
   const [day, setDay] = useState(0);
   const [hour, setHour] = useState(0);
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
+
   const [isEnded, setIsEnded] = useState(false);
+
   const countDownDate = new Date(time).getTime();
 
   useEffect(() => {
@@ -28,6 +60,9 @@ export default function CountDown({ name, time }: any) {
         setIsEnded(true);
       }
     }, 1000);
+    return () => {
+      clearInterval(x);
+    };
   });
 
   return (

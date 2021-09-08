@@ -23,7 +23,7 @@ function CalendarPage() {
 
   return (
     <div>
-      <CountDown time="Sep 29, 2021 15:37:25" name="OFFLINE CONTEST" />
+      <CountDown />
       <Grid container justifyContent="space-between">
         {eventList?.map((event) => (
           <CalendarPost

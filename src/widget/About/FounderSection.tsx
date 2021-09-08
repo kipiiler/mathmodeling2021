@@ -125,15 +125,19 @@ export default function FounderSection() {
           style={{ borderTop: "1px solid grey", paddingTop: 16 }}
         >
           <Typography align="left" color="textPrimary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-            cum distinctio hic obcaecati eos laboriosam? Tempora incidunt
-            maiores veritatis soluta praesentium optio debitis minus sint. Quia
-            magni eos officiis eius.
+            7 năm Toán Mô Hình xây dựng và phát triển - 7 thế hệ Ban Tổ Chức
+            Toán Mô Hình đã được thành lập vào tháng 6 năm 2015 bởi các bạn trẻ
+            tài năng đang là du học sinh tại Mỹ và Singapore. Cùng chung lý
+            tưởng và đam mê với Toán, các bạn đã mang bộ môn Toán Mô Hình trở về
+            giảng dạy tại Việt Nam, với mong muốn nâng cao nền giáo dục toán ứng
+            dụng nước nhà. Những gương mặt founder tài năng đó là ai? Điều gì
+            khiến những nhà sáng lập này trở nên đặc biệt?
           </Typography>
         </Grid>
         <Grid container style={{ marginTop: 40 }}>
           {FounderData.map((item, index) => (
             <FouderCardChosing
+              key={index}
               name={item.name}
               image={item.image}
               index={index}

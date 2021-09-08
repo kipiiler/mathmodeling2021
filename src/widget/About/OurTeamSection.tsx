@@ -3,7 +3,8 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import About1 from "../../static/About1.jpg";
+import About3 from "../../static/About3.jpg";
+import About4 from "../../static/About4.jpg";
 import { apiUrl } from "../../config/apiUrl.json";
 import MemberCard from "../../components/MemberCard";
 
@@ -39,12 +40,17 @@ export default function OurTeamSection() {
         </Grid>
         <Grid item xs={6}>
           <Typography align="left" color="textPrimary">
-            Với nhiều năm xây dựng và phát triển, Toán Mô Hình đã xây dựng được
-            một đội ngũ nhân sự không chỉ có chất lượng chuyên môn cao mà còn là
-            một tổ chức đoàn kết, truyền cảm hứng trong công việc. Tuy có những
-            sự thay đổi nhân sự giữa các năm nhưng tinh thần tổ chức không hề
-            thay đổi. Điều đó được thể hiện qua những thành tích gặt hái và sự
-            phát triển lớn mạnh dần qua từng năm.
+            Học sinh, sinh viên Việt Nam còn gặp hạn chế về nền tảng để phát
+            triển kĩ năng tự học và nghiên cứu cũng như các kĩ năng mềm như làm
+            việc nhóm và thuyết trình. Thông qua các dự án của Toán Mô Hình,
+            chúng tôi muốn xây dựng một môi trường nơi học sinh, sinh viên có
+            thể có cơ hội phát triển toàn diện, nêu lên ý tưởng của mình. Với
+            nhiều năm xây dựng và phát triển, Toán Mô Hình đã xây dựng được một
+            đội ngũ nhân sự không chỉ có chất lượng chuyên môn cao mà còn là một
+            tổ chức đoàn kết, truyền cảm hứng trong công việc. Tuy có những sự
+            thay đổi nhân sự giữa các năm nhưng tinh thần tổ chức không hề thay
+            đổi. Điều đó được thể hiện qua những thành tích gặt hái và sự phát
+            triển lớn mạnh dần qua từng năm.
           </Typography>
         </Grid>
         <Grid
@@ -56,7 +62,7 @@ export default function OurTeamSection() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url(${About1})`,
+            backgroundImage: `url(${About3})`,
             minHeight: "300px",
             border: "12px solid white",
           }}
@@ -70,7 +76,7 @@ export default function OurTeamSection() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url(${About1})`,
+            backgroundImage: `url(${About4})`,
             minHeight: "300px",
             border: "12px solid white",
             borderRight: "none",

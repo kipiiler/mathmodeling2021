@@ -15,7 +15,13 @@ export default function FAQDisplay({ question, answer }: Props) {
       container
       direction="column"
       justifyContent="center"
-      style={{ padding: 8, marginTop: 24, cursor: "pointer" }}
+      style={{
+        padding: 24,
+        marginTop: 24,
+        cursor: "pointer",
+        border: "1px solid #E8ECF1",
+        borderRadius: 8,
+      }}
       onClick={() => {
         setOpen(!open);
       }}

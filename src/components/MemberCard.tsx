@@ -12,7 +12,7 @@ export default function MemberCard({ data }: any) {
     <>
       <Grid item xs={4} style={{ marginBottom: 16 }}>
         <Flippy
-          flipOnClick={true}
+          flipOnHover={true}
           flipDirection="horizontal"
           style={{ width: "auto", height: "auto" }}
         >
@@ -41,12 +41,19 @@ export default function MemberCard({ data }: any) {
                 }}
               ></Grid>
               <Grid item xs={12}>
-                <Typography variant="body1" style={{ paddingTop: "5%" }}>
+                <Typography
+                  variant="h3"
+                  color="secondary"
+                  style={{ paddingTop: "5%", fontWeight: 500 }}
+                >
                   {data?.name}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="body1" style={{ paddingTop: "5%" }}>
+                <Typography
+                  variant="body1"
+                  style={{ paddingTop: "5%", fontWeight: 300 }}
+                >
                   {data?.role}
                 </Typography>
               </Grid>

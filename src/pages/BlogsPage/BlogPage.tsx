@@ -15,7 +15,7 @@ function BlogsPage() {
   useEffect(() => {
     axios.get(`${apiUrl}/api/article`).then((res) => {
       if (res.data) {
-        setBlogList(res.data);
+        setBlogList(res.data.filter((el: any) => el.isPublished === true));
       }
     });
   }, []);

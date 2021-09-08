@@ -32,3 +32,5 @@ declare module "react-flippy";
 declare module "react-router-dom";
 declare module "react-mathjax-preview";
 declare module "react-html-parser";
+declare module "react-mathjax";
+declare module "react-mathjax3";

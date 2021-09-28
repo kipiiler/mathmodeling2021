@@ -1,68 +1,42 @@
 import { Grid } from "@material-ui/core";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CalendarPost from "../../components/CalendarPost";
 import CountDown from "../../components/Countdown";
 import withLayout from "../../layout/withLayout";
+import { apiUrl } from "../../config/apiUrl.json";
+
+interface IEvent {
+  [key: string]: any;
+}
 
 function CalendarPage() {
+  const [eventList, setEventList] = useState<IEvent[]>();
+
+  useEffect(() => {
+    axios.get(`${apiUrl}/api/event`).then((res) => {
+      if (res.data) {
+        setEventList(res.data);
+      }
+    });
+  }, []);
+
   return (
     <div>
-      <CountDown time="Jan 5, 2022 15:37:25" name="OFFLINE CONTEST" />
+      <CountDown />
       <Grid container justifyContent="space-between">
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
-        <CalendarPost
-          body="fukk fuk fukk fukk fukk"
-          title="aaaaa"
-          image="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
-          month={1}
-        />
+        {eventList?.map((event) => (
+          <CalendarPost
+            key={event.id}
+            body={event.brief || "FFFF"}
+            title={event.name}
+            image={
+              `${apiUrl}/Images/${event.image}` ||
+              "https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
+            }
+            month={new Date(event.dateStart).getMonth()}
+          />
+        ))}
       </Grid>
     </div>
   );

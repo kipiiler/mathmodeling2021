@@ -7,10 +7,10 @@ import { apiUrl } from "../config/apiUrl.json";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
-export default function GalleryPageDisplay({ year }: any) {
+export default function GalleryPageDisplay({ i, year }: any) {
   const [images, setImages] = useState<any>();
   const [selectedImages, setSelectedImages] = useState<any>();
-  const [index, setIndex] = useState<number>(1);
+  const [index, setIndex] = useState<number>(i || 1);
   const [maxIndex, setMaxIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -54,10 +54,10 @@ export default function GalleryPageDisplay({ year }: any) {
   }
 
   function handleSwitch(action: string) {
-    if (action == "+") {
+    if (action === "+") {
       index < maxIndex ? setIndex(index + 1) : setIndex(index);
     }
-    if (action == "-") {
+    if (action === "-") {
       index > 1 ? setIndex(index - 1) : setIndex(1);
     }
   }

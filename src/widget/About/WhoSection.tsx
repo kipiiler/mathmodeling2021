@@ -30,16 +30,16 @@ export default function WhoAreWeSection() {
             Chúng tôi là ai
           </Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} style={{ marginBottom: 18 }}>
           <Typography align="left" variant="h5" color="textPrimary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            itaque nobis porro numquam, eaque quidem nulla. Magnam dicta aliquam
-            explicabo cumque temporibus voluptas doloribus voluptates saepe
-            illum laboriosam, quidem molestiae.Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Dolorum sapiente repudiandae id
-            cupiditate ex vel veritatis corrupti iusto, mollitia minima, ipsum
-            magni, amet nulla veniam commodi! Dignissimos, corrupti consectetur.
-            Earum!
+            Toán Mô Hình Hà Nội (Math Modelling Contest - MMC) là một tổ chức
+            thúc đẩy phát triển ứng dụng của toán học được khởi xướng bởi VSMC
+            (VIETNAM STUDENTS MATHEMATICS COMMUNITY) - một tổ chức học sinh,
+            sinh viên được thành lập vào tháng 6 năm 2015 bởi một nhóm du học
+            sinh có niềm đam mê toán học tại Mỹ và Singapore Mục đích chính là
+            đưa đến nhiều góc nhìn khác về Toán học đến với học sinh Việt Nam và
+            trải nghiệm, thực hành những kỹ năng mềm cần thiết có trong cuộc
+            sống.
           </Typography>
         </Grid>
         <Grid

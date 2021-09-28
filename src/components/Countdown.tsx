@@ -1,16 +1,47 @@
 import { Button, Grid, Typography } from "@material-ui/core";
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import BackgroundCool from "../static/BackgroundCool.svg";
+import { apiUrl } from "../config/apiUrl.json";
 
-export default function CountDown({ name, time }: any) {
+interface IEvent {
+  [key: string]: any;
+}
+
+export default function CountDown() {
+  const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
+  useEffect(() => {
+    axios.get(`${apiUrl}/api/event`).then((res) => {
+      if (res.data) {
+        setFeatureEvent(
+          res.data.sort(function compare(a: any, b: any) {
+            var dateA: any = new Date(a.dateStart);
+            var dateB: any = new Date(b.dateStart);
+            return dateB - dateA;
+          })
+        );
+      }
+    });
+  }, []);
+
+  return (
+    <ClockElement
+      name={featuredEvent && featuredEvent[0].name}
+      time={featuredEvent && featuredEvent[0].dateStart}
+    />
+  );
+}
+
+function ClockElement({ name, time }: any) {
   const [day, setDay] = useState(0);
   const [hour, setHour] = useState(0);
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
+
   const [isEnded, setIsEnded] = useState(false);
-  // const now = new Date().getTime();
+
   const countDownDate = new Date(time).getTime();
-  // let distance = countDownDate - now;
 
   useEffect(() => {
     var x = setInterval(function () {
@@ -29,7 +60,10 @@ export default function CountDown({ name, time }: any) {
         setIsEnded(true);
       }
     }, 1000);
-  }, []);
+    return () => {
+      clearInterval(x);
+    };
+  });
 
   return (
     <Grid
@@ -39,7 +73,7 @@ export default function CountDown({ name, time }: any) {
         padding: "30px",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundImage: `url("https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png")`,
+        backgroundImage: `url("${BackgroundCool}")`,
         minHeight: "200px",
       }}
     >
@@ -80,7 +114,11 @@ export default function CountDown({ name, time }: any) {
           </Typography>
         )}
       </Grid>
-      <Grid container justifyContent="center" style={{ marginTop: 20 }}>
+      <Grid
+        container
+        justifyContent="center"
+        style={{ marginTop: 20, marginBottom: 60 }}
+      >
         <Button variant="contained" color="primary">
           <Typography>Đăng kí</Typography>
         </Button>

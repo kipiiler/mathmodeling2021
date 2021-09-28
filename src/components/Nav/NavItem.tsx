@@ -21,7 +21,7 @@ export default function NavItem({ link, fontWeight }: any) {
               "/" + link === path.pathname ? fontWeight + 100 : fontWeight,
           }}
         >
-          {link == "" ? "Home" : capitalizeFirstLetter(link)}
+          {link === "" ? "Home" : capitalizeFirstLetter(link)}
         </Typography>
       </Link>
     </Grid>

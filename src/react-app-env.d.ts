@@ -13,6 +13,11 @@ declare module "*.jpg" {
   export default value;
 }
 
+declare module "*.JPG" {
+  const value: string;
+  export default value;
+}
+
 declare module "*.jpeg" {
   const value: string;
   export default value;
@@ -25,3 +30,7 @@ declare module "*.woff2";
 declare module "react-flippy";
 
 declare module "react-router-dom";
+declare module "react-mathjax-preview";
+declare module "react-html-parser";
+declare module "react-mathjax";
+declare module "react-mathjax3";

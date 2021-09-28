@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
+import BackgroundCool from "../static/BackgroundCool.svg";
 
 export default function FounderCardDisplay({ data }: any) {
   return (
@@ -13,7 +14,7 @@ export default function FounderCardDisplay({ data }: any) {
         padding: "30px",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundImage: `url("https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png")`,
+        backgroundImage: `url("${BackgroundCool}")`,
         minHeight: "250px",
       }}
     >
@@ -73,7 +74,7 @@ export default function FounderCardDisplay({ data }: any) {
         </Grid>
         <Grid item xs={6}>
           <Typography align="left" variant="h5" color="textSecondary">
-            Fav.Quote {data.favquote}
+            Fav.Quote: {data.favquote}
           </Typography>
         </Grid>
       </Grid>

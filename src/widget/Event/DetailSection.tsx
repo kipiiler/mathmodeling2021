@@ -12,6 +12,7 @@ interface IEvent {
 
 export default function DetailEventSection() {
   const [eventList, setEventList] = useState<IEvent[]>();
+  const [filterEventList, setFilterEventList] = useState<IEvent[]>();
   const [selectedEvent, setSelectedEvent] = useState<IEvent>();
 
   useEffect(() => {
@@ -23,8 +24,16 @@ export default function DetailEventSection() {
   }, []);
 
   useEffect(() => {
+    if (filterEventList) {
+      setSelectedEvent(filterEventList[0]);
+    }
+  }, [filterEventList]);
+
+  useEffect(() => {
     if (eventList) {
-      setSelectedEvent(eventList[0]);
+      setFilterEventList(
+        eventList.filter((event) => event.isBigEvent === true)
+      );
     }
   }, [eventList]);
 
@@ -35,14 +44,15 @@ export default function DetailEventSection() {
         style={{
           cursor: "pointer",
           borderRight:
-            eventList && eventList?.length - 1 === index
+            filterEventList && filterEventList?.length - 1 === index
               ? ""
               : "2px solid #1B4D82",
-          paddingRight: eventList && eventList?.length - 1 === index ? "0" : 40,
+          paddingRight:
+            filterEventList && filterEventList?.length - 1 === index ? "0" : 40,
           margin: "0 20px",
         }}
         onClick={() => {
-          setSelectedEvent(eventList && eventList[index]);
+          setSelectedEvent(filterEventList && filterEventList[index]);
         }}
       >
         <Typography
@@ -50,7 +60,6 @@ export default function DetailEventSection() {
           style={{ fontWeight: name === selectedEvent?.name ? 600 : 400 }}
           color={name === selectedEvent?.name ? "secondary" : "textPrimary"}
         >
-          {" "}
           {name}
         </Typography>
       </Grid>
@@ -61,7 +70,7 @@ export default function DetailEventSection() {
     <>
       <Grid container>
         <Grid container alignItems="center" justifyContent="center">
-          {eventList?.map((item, index) => (
+          {filterEventList?.map((item, index) => (
             <EventNav key={index} name={item.name} index={index} />
           ))}
         </Grid>

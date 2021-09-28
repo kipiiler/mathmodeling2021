@@ -15,7 +15,7 @@ function BlogsPage() {
   useEffect(() => {
     axios.get(`${apiUrl}/api/article`).then((res) => {
       if (res.data) {
-        setBlogList(res.data);
+        setBlogList(res.data.filter((el: any) => el.isPublished === true));
       }
     });
   }, []);
@@ -29,7 +29,7 @@ function BlogsPage() {
             id={item?.id}
             body={item?.body.slice(0, 600)}
             title={item?.title}
-            image={item?.images[0]}
+            image={(item && item.image != null && item.image) || null}
           />
         ))}
       </Grid>

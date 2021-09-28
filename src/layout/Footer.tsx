@@ -93,7 +93,7 @@ function Footer() {
                           <Grid item xs={6}>
                             <Grid container alignItems="center">
                               <Grid item xs={2}>
-                                <PinDropIcon style={{ color: "white" }} />
+                                <ScheduleIcon style={{ color: "white" }} />
                               </Grid>
                               <Grid item xs={10}>
                                 <Typography
@@ -110,7 +110,7 @@ function Footer() {
                           <Grid item xs={6}>
                             <Grid container alignItems="center">
                               <Grid item xs={2}>
-                                <ScheduleIcon style={{ color: "white" }} />
+                                <PinDropIcon style={{ color: "white" }} />
                               </Grid>
                               <Grid item xs={10}>
                                 <Typography

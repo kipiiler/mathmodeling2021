@@ -60,7 +60,7 @@ export default function FeatEvent({ detail, time, location, name, link }: any) {
                 <Grid item xs={4}>
                   <Grid container justifyContent="center" alignItems="center">
                     <Grid item xs={2}>
-                      <PinDropIcon style={{ color: "#1B4D82" }} />
+                      <ScheduleIcon style={{ color: "#1B4D82" }} />
                     </Grid>
                     <Grid item xs={9}>
                       <Typography>{convertDate(time)}</Typography>
@@ -70,7 +70,7 @@ export default function FeatEvent({ detail, time, location, name, link }: any) {
                 <Grid item xs={4}>
                   <Grid container justifyContent="center" alignItems="center">
                     <Grid item xs={2}>
-                      <ScheduleIcon style={{ color: "#1B4D82" }} />
+                      <PinDropIcon style={{ color: "#1B4D82" }} />
                     </Grid>
                     <Grid item xs={9}>
                       <Typography>{location}</Typography>

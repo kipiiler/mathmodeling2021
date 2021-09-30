@@ -42,6 +42,7 @@ export default function MemberCard({ data }: any) {
               ></Grid>
               <Grid item xs={12}>
                 <Typography
+                  align='center'
                   variant="h3"
                   color="secondary"
                   style={{ paddingTop: "5%", fontWeight: 500 }}
@@ -51,6 +52,7 @@ export default function MemberCard({ data }: any) {
               </Grid>
               <Grid item xs={12}>
                 <Typography
+                  align='center'
                   variant="body1"
                   style={{ paddingTop: "5%", fontWeight: 300 }}
                 >

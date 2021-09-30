@@ -5,6 +5,7 @@ import CalendarPost from "../../components/CalendarPost";
 import CountDown from "../../components/Countdown";
 import withLayout from "../../layout/withLayout";
 import { apiUrl } from "../../config/apiUrl.json";
+import ContactForm from "../../components/Contact";
 
 interface IEvent {
   [key: string]: any;
@@ -17,6 +18,7 @@ function CalendarPage() {
     axios.get(`${apiUrl}/api/event`).then((res) => {
       if (res.data) {
         setEventList(res.data);
+        console.log(res.data)
       }
     });
   }, []);
@@ -35,9 +37,11 @@ function CalendarPage() {
               "https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png"
             }
             month={new Date(event.dateStart).getMonth()}
+            year={new Date(event.dateStart).getFullYear()}
           />
         ))}
       </Grid>
+      <ContactForm />
     </div>
   );
 }

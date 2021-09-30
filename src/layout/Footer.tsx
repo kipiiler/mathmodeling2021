@@ -161,12 +161,18 @@ function Footer() {
                             <RoomIcon style={{ color: "white" }} />
                           </Grid>
                           <Grid item xs={10}>
-                            <Typography
-                              align="left"
-                              style={{ paddingLeft: 8, color: "white" }}
+                            <a
+                              style={{ textDecoration: "none" }}
+                              target='_blank'
+                              href='https://www.facebook.com/toanmohinh.hanoi/'
                             >
-                              Số 130 ngõ 3 Trường Chinh Hà Nội
-                            </Typography>
+                              <Typography
+                                align="left"
+                                style={{ paddingLeft: 8, color: "white" }}
+                              >
+                                Fanpagae
+                              </Typography>
+                            </a>
                           </Grid>
                         </Grid>
                         <Grid container alignItems="center">
@@ -178,7 +184,7 @@ function Footer() {
                               align="left"
                               style={{ paddingLeft: 8, color: "white" }}
                             >
-                              0931 4329 4595
+                              0855928355
                             </Typography>
                           </Grid>
                         </Grid>

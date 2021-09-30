@@ -1,10 +1,14 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
 import { apiUrl } from "../../config/apiUrl.json";
+import { convertDate } from '../../utils/dateFormater'
+
+import ScheduleIcon from "@material-ui/icons/Schedule";
+import PinDropIcon from "@material-ui/icons/PinDrop";
 
 interface IEvent {
   [key: string]: any;
@@ -84,9 +88,8 @@ export default function DetailEventSection() {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
-              backgroundImage: `url("${
-                selectedEvent && apiUrl + "/Images/" + selectedEvent?.image
-              }")`,
+              backgroundImage: `url("${selectedEvent && apiUrl + "/Images/" + selectedEvent?.image
+                }")`,
               minHeight: "500px ",
               border: "12px solid white",
               margin: "40px 0 60px 0",
@@ -101,6 +104,44 @@ export default function DetailEventSection() {
             <Typography align="left" variant="h5" color="textPrimary">
               {selectedEvent?.body}
             </Typography>
+          </Grid>
+          <Grid container>
+            <Grid>
+              <Grid container>
+                <Grid item style={{ marginRight: 10 }}>
+                  <ScheduleIcon style={{ color: "#1B4D82" }} />
+                </Grid>
+                <Grid item>
+                  <Typography>{convertDate(selectedEvent?.dateStart)}</Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid >
+              <Grid container justifyContent="center" alignItems="center" style={{ marginLeft: 80 }}>
+                <Grid item style={{ marginRight: 10 }}>
+                  <PinDropIcon style={{ color: "#1B4D82" }} />
+                </Grid>
+                <Grid item>
+                  <Typography>{selectedEvent?.location || "Unknown"}</Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Button
+              variant="contained"
+              style={{
+                boxShadow: "none",
+                paddingRight: 32,
+                paddingLeft: 32,
+                background: "#1B4D82",
+                marginTop: 8,
+                color: "white",
+              }}
+              href={selectedEvent?.signUpLink || "https://www.facebook.com/toanmohinh.hanoi/"}
+            >
+              <Typography>Đăng kí</Typography>
+            </Button>
           </Grid>
         </Grid>
       </Grid>

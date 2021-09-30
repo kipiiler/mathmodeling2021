@@ -1,17 +1,17 @@
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 
-export default function CalendarPost({ image, title, body, month }: any) {
+export default function CalendarPost({ image, title, body, month, year }: any) {
   return (
     <Grid item xs={4}>
       <Grid style={{ margin: 24 }}>
         <Typography
           align="left"
           variant="h3"
-          color="textPrimary"
-          style={{ marginBottom: 12 }}
+          color="secondary"
+          style={{ marginBottom: 12, fontWeight: 500 }}
         >
-          Tháng {month}
+          Tháng {month} Năm {year}
         </Typography>
         <Grid
           style={{

@@ -95,6 +95,7 @@ export default function FounderSection() {
           }}
         >
           <Typography
+            align='center'
             variant="h3"
             style={{ fontWeight: 400 }}
             color={name === displayFounder.name ? "textSecondary" : "secondary"}

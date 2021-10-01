@@ -10,30 +10,37 @@ interface IEvent {
 }
 
 export default function CountDown() {
+  const [filteredEvent, setFilteredEvent] = useState<IEvent[]>();
   const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
   useEffect(() => {
     axios.get(`${apiUrl}/api/event`).then((res) => {
-      if (res.data) {
-        setFeatureEvent(
-          res.data.sort(function compare(a: any, b: any) {
-            var dateA: any = new Date(a.dateStart);
-            var dateB: any = new Date(b.dateStart);
-            return dateB - dateA;
-          })
-        );
-      }
+      setFilteredEvent(res.data.filter((e: any) => e.ended === true));
     });
   }, []);
 
+  useEffect(() => {
+    if (filteredEvent) {
+      setFeatureEvent(
+        filteredEvent.sort(function compare(a: any, b: any) {
+          var dateA: any = new Date(a.dateStart);
+          var dateB: any = new Date(b.dateStart);
+          return dateB - dateA;
+        }))
+    }
+  }, [filteredEvent])
+
   return (
-    <ClockElement
-      name={featuredEvent && featuredEvent[0].name}
-      time={featuredEvent && featuredEvent[0].dateStart}
-    />
+    <>
+      <ClockElement
+        name={featuredEvent && featuredEvent[0].name}
+        time={featuredEvent && featuredEvent[0].dateStart}
+        link={featuredEvent && featuredEvent[0].signUpLink}
+      />
+    </>
   );
 }
 
-function ClockElement({ name, time }: any) {
+function ClockElement({ name, time, link }: any) {
   const [day, setDay] = useState(0);
   const [hour, setHour] = useState(0);
   const [min, setMin] = useState(0);
@@ -119,7 +126,7 @@ function ClockElement({ name, time }: any) {
         justifyContent="center"
         style={{ marginTop: 20, marginBottom: 60 }}
       >
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" href={link} disabled={!link?.length}>
           <Typography>Đăng kí</Typography>
         </Button>
       </Grid>

@@ -17,20 +17,25 @@ interface IEvent {
 }
 
 function Footer() {
+  const [filteredEvent, setFilteredEvent] = useState<IEvent[]>();
   const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
   useEffect(() => {
     axios.get(`${apiUrl}/api/event`).then((res) => {
-      if (res.data) {
-        setFeatureEvent(
-          res.data.sort(function compare(a: any, b: any) {
-            var dateA: any = new Date(a.dateStart);
-            var dateB: any = new Date(b.dateStart);
-            return dateB - dateA;
-          })
-        );
-      }
+      setFilteredEvent(res.data.filter((e: any) => e.ended === true));
     });
   }, []);
+
+  useEffect(() => {
+    if (filteredEvent) {
+      setFeatureEvent(
+        filteredEvent.sort(function compare(a: any, b: any) {
+          var dateA: any = new Date(a.dateStart);
+          var dateB: any = new Date(b.dateStart);
+          return dateB - dateA;
+        }))
+    }
+  }, [filteredEvent])
+
   return (
     <Grid container style={{ background: "#1B4D82", paddingTop: 12 }}>
       <Container>
@@ -170,7 +175,7 @@ function Footer() {
                                 align="left"
                                 style={{ paddingLeft: 8, color: "white" }}
                               >
-                                Fanpagae
+                                Fanpage
                               </Typography>
                             </a>
                           </Grid>

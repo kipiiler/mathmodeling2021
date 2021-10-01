@@ -12,20 +12,25 @@ interface IEvent {
 }
 
 function HomePage() {
+  const [filteredEvent, setFilteredEvent] = useState<IEvent[]>();
   const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
   useEffect(() => {
     axios.get(`${apiUrl}/api/event`).then((res) => {
-      if (res.data) {
-        setFeatureEvent(
-          res.data.sort(function compare(a: any, b: any) {
-            var dateA: any = new Date(a.dateStart);
-            var dateB: any = new Date(b.dateStart);
-            return dateB - dateA;
-          })
-        );
-      }
+      setFilteredEvent(res.data.filter((e: any) => e.ended === true));
     });
   }, []);
+
+  useEffect(() => {
+    if (filteredEvent) {
+      setFeatureEvent(
+        filteredEvent.sort(function compare(a: any, b: any) {
+          var dateA: any = new Date(a.dateStart);
+          var dateB: any = new Date(b.dateStart);
+          return dateB - dateA;
+        }))
+    }
+  }, [filteredEvent])
+
   return (
     <div>
       <FeatEvent

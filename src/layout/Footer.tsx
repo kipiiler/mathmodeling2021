@@ -21,7 +21,7 @@ function Footer() {
   const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
   useEffect(() => {
     axios.get(`${apiUrl}/api/event`).then((res) => {
-      setFilteredEvent(res.data.filter((e: any) => e.ended === true));
+      setFilteredEvent(res.data.filter((e: any) => e.ended === false && e.isBigEvent === true));
     });
   }, []);
 

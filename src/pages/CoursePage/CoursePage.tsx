@@ -5,7 +5,10 @@ import withLayout from "../../layout/withLayout";
 
 function CoursePage() {
   return (
-    <Grid
+    <Grid container
+      justifyContent='flex-start'
+      direction='column'
+      alignItems='center'
       style={{
         margin: "48px 0",
         height: "50vh",

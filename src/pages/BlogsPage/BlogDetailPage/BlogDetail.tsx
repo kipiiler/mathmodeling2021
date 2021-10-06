@@ -9,6 +9,8 @@ import Grid from "@material-ui/core/Grid/Grid";
 import { Typography } from "@material-ui/core";
 import OtherBlogSection from "../../../widget/OtherBlog";
 
+import MathJax from "react-mathjax3";
+
 interface IOBj {
   [key: string]: any;
 }
@@ -31,69 +33,45 @@ function BlogDetailPage() {
             {blog?.title}
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          style={{
-            display: !blog?.images?.length ? "none" : "",
-            height: "auto",
-            width: "100%",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "contain",
-            backgroundImage: `url("${apiUrl + "/Images/" + blog?.images[0]}")`,
-            minHeight: "400px ",
-          }}
-        ></Grid>
         <Grid item xs={9}>
-          <Typography
-            align="justify"
-            color="textPrimary"
-            style={{ margin: "20px 0" }}
+          <MathJax.Context
+            input="tex"
+            onLoad={() => console.log("Loaded MathJax script!")}
+            onError={(MathJax: any, error: any) => {
+              console.warn(error);
+              console.log(
+                "Encountered a MathJax error, re-attempting a typeset!"
+              );
+              MathJax.Hub.Queue(MathJax.Hub.Typeset());
+            }}
+            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"
+            options={{
+              messageStyle: "none",
+              extensions: ["tex2jax.js"],
+              jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [
+                  ["$", "$"],
+                  ["\\(", "\\)"],
+                ],
+                displayMath: [
+                  ["$$", "$$"],
+                  ["\\[", "\\]"],
+                ],
+                processEscapes: true,
+              },
+              TeX: {
+                extensions: [
+                  "AMSmath.js",
+                  "AMSsymbols.js",
+                  "noErrors.js",
+                  "noUndefined.js",
+                ],
+              },
+            }}
           >
-            {blog?.body}
-          </Typography>
-        </Grid>
-        <Grid item xs={9}>
-          {blog?.images?.length > 1 && (
-            <Grid container>
-              <Grid
-                item
-                xs={blog?.images?.length == 2 ? 12 : 6}
-                style={{
-                  height: "auto",
-                  width: "100%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundImage: `url("${
-                    apiUrl + "/Images/" + blog?.images[1]
-                  }")`,
-                  minHeight: blog?.images?.length == 2 ? "400px" : "300px",
-                  border: "12px solid white",
-                  borderLeft: "none",
-                }}
-              ></Grid>
-              <Grid
-                item
-                xs={6}
-                style={{
-                  display: blog?.images?.length == 2 ? "none" : "",
-                  height: "auto",
-                  width: "100%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundImage: `url("${
-                    apiUrl + "/Images/" + blog?.images[2]
-                  }")`,
-                  minHeight: "300px ",
-                  border: "12px solid white",
-                  borderRight: "none",
-                }}
-              ></Grid>
-            </Grid>
-          )}
+            <MathJax.Html html={blog?.body} />
+          </MathJax.Context>
         </Grid>
       </Grid>
       <OtherBlogSection />

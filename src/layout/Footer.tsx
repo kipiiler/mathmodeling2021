@@ -1,5 +1,5 @@
 import { Button, Grid, Typography, Container } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavItem from "../components/Nav/NavItem";
 import MathLogo from "../static/mathmodellogo.png";
 
@@ -8,8 +8,34 @@ import PinDropIcon from "@material-ui/icons/PinDrop";
 import PhoneIcon from "@material-ui/icons/Phone";
 import RoomIcon from "@material-ui/icons/Room";
 import EmailIcon from "@material-ui/icons/Email";
+import axios from "axios";
+import { apiUrl } from "../config/apiUrl.json";
+import { convertDatewihtMonth } from "../utils/dateFormater";
+
+interface IEvent {
+  [key: string]: any;
+}
 
 function Footer() {
+  const [filteredEvent, setFilteredEvent] = useState<IEvent[]>();
+  const [featuredEvent, setFeatureEvent] = useState<IEvent[]>();
+  useEffect(() => {
+    axios.get(`${apiUrl}/api/event`).then((res) => {
+      setFilteredEvent(res.data.filter((e: any) => e.ended === false && e.isBigEvent === true));
+    });
+  }, []);
+
+  useEffect(() => {
+    if (filteredEvent) {
+      setFeatureEvent(
+        filteredEvent.sort(function compare(a: any, b: any) {
+          var dateA: any = new Date(a.dateStart);
+          var dateB: any = new Date(b.dateStart);
+          return dateB - dateA;
+        }))
+    }
+  }, [filteredEvent])
+
   return (
     <Grid container style={{ background: "#1B4D82", paddingTop: 12 }}>
       <Container>
@@ -66,24 +92,9 @@ function Footer() {
                           style={{ fontWeight: 300, color: "white" }}
                           gutterBottom
                         >
-                          Offline Contest
+                          {featuredEvent && featuredEvent[0]?.name}
                         </Typography>
                         <Grid container>
-                          <Grid item xs={6}>
-                            <Grid container alignItems="center">
-                              <Grid item xs={2}>
-                                <PinDropIcon style={{ color: "white" }} />
-                              </Grid>
-                              <Grid item xs={10}>
-                                <Typography
-                                  align="left"
-                                  style={{ color: "white" }}
-                                >
-                                  Tháng 7/2021
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                          </Grid>
                           <Grid item xs={6}>
                             <Grid container alignItems="center">
                               <Grid item xs={2}>
@@ -94,7 +105,26 @@ function Footer() {
                                   align="left"
                                   style={{ color: "white" }}
                                 >
-                                  Hà Nội
+                                  {convertDatewihtMonth(
+                                    featuredEvent && featuredEvent[0]?.dateStart
+                                  )}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Grid container alignItems="center">
+                              <Grid item xs={2}>
+                                <PinDropIcon style={{ color: "white" }} />
+                              </Grid>
+                              <Grid item xs={10}>
+                                <Typography
+                                  align="left"
+                                  style={{ color: "white" }}
+                                >
+                                  {(featuredEvent &&
+                                    featuredEvent[0]?.location) ||
+                                    "Hà Nội"}
                                 </Typography>
                               </Grid>
                             </Grid>
@@ -111,6 +141,10 @@ function Footer() {
                               marginTop: 8,
                               color: "white",
                             }}
+                            href={
+                              (featuredEvent && featuredEvent[0]?.signUpLink) ||
+                              "https://www.facebook.com/toanmohinh.hanoi/"
+                            }
                           >
                             <Typography>Đăng kí</Typography>
                           </Button>
@@ -132,12 +166,18 @@ function Footer() {
                             <RoomIcon style={{ color: "white" }} />
                           </Grid>
                           <Grid item xs={10}>
-                            <Typography
-                              align="left"
-                              style={{ paddingLeft: 8, color: "white" }}
+                            <a
+                              style={{ textDecoration: "none" }}
+                              target='_blank'
+                              href='https://www.facebook.com/toanmohinh.hanoi/'
                             >
-                              Số 130 ngõ 3 Trường Chinh Hà Nội
-                            </Typography>
+                              <Typography
+                                align="left"
+                                style={{ paddingLeft: 8, color: "white" }}
+                              >
+                                Fanpage
+                              </Typography>
+                            </a>
                           </Grid>
                         </Grid>
                         <Grid container alignItems="center">
@@ -149,7 +189,7 @@ function Footer() {
                               align="left"
                               style={{ paddingLeft: 8, color: "white" }}
                             >
-                              0931 4329 4595
+                              0855928355
                             </Typography>
                           </Grid>
                         </Grid>

@@ -1,6 +1,5 @@
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
-import Logo from "../../static/mathmodellogo.png";
 import CUBE from "../../static/CUBE.svg";
 import HANDS from "../../static/HANDS.svg";
 import MAP from "../../static/MAP.svg";
@@ -14,11 +13,12 @@ function NumberColumn({ bigtitle, smalltitle, body, image }: any) {
       style={{ padding: "40px 20px", borderRight: "2px solid white" }}
     >
       <Grid container direction="column">
-        <Grid>
-          <img src={image && image} height={100} width={100} />
+        <Grid container alignContent='center' justifyContent='center'>
+          <img src={image && image} height={100} width={100} alt="icon" />
         </Grid>
         <Grid>
           <Typography
+            align='center'
             variant="h5"
             color="secondary"
             style={{ fontSize: "48px" }}
@@ -27,12 +27,13 @@ function NumberColumn({ bigtitle, smalltitle, body, image }: any) {
           </Typography>
         </Grid>
         <Grid>
-          <Typography variant="h2" color="secondary" gutterBottom>
+          <Typography align='center' variant="h2" color="secondary" gutterBottom>
             {smalltitle}
           </Typography>
         </Grid>
         <Grid>
           <Typography
+            align='center'
             variant="h4"
             color="secondary"
             gutterBottom

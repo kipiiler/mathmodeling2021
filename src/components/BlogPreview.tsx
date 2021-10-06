@@ -2,6 +2,7 @@ import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../config/apiUrl.json";
+import ReactHtmlParser from "react-html-parser";
 
 export default function BlogPreview({ id, title, body, image }: any) {
   return (
@@ -21,7 +22,9 @@ export default function BlogPreview({ id, title, body, image }: any) {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url("${apiUrl + "/Images/" + image}")`,
+            backgroundImage:
+              (image && `url("${apiUrl + "/Images/" + image}")`) ||
+              `url("https://media.istockphoto.com/vectors/abstract-blue-and-orange-wave-vector-background-vector-id1142714085?k=20&m=1142714085&s=612x612&w=0&h=tjCYjd9KG848OcbzSQy1Htb7Yq8_4r98uGpcyzTP0yk=")`,
             minHeight: "250px",
           }}
         ></Grid>
@@ -42,7 +45,7 @@ export default function BlogPreview({ id, title, body, image }: any) {
 
               <Grid>
                 <Typography align="left" color="textPrimary">
-                  {body}
+                  {ReactHtmlParser(body.slice(0, 600))}
                 </Typography>
               </Grid>
             </Grid>
